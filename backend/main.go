@@ -80,6 +80,10 @@ func main() {
 	http.HandleFunc("/Update", Update)
 	http.HandleFunc("/Shipping", Shipping)
 
+	server := http.FileServer(http.Dir("../frontend"))
+	http.Handle("/", server)
+	fmt.Println("Server Active http://127.0.0.1:8000/connect.html")
+
 	fmt.Println("Run http://127.0.0.1:8000 OK")
 	http.ListenAndServe("127.0.0.1:8000", nil)
 }
@@ -90,9 +94,6 @@ func connectDB() {
 		log.Println(err)
 		return
 	}
-	server := http.FileServer(http.Dir("../frontend"))
-	http.Handle("/", server)
-	fmt.Println("Server Active http://127.0.0.1:5500/frontend/connect.html")
 
 	password := os.Getenv("PASSWORD")
 	databaseURL := fmt.Sprintf("postgres://postgres:%s@127.0.0.1:5432/inventory", password)
