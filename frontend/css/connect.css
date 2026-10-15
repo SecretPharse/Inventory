@@ -8,7 +8,7 @@ body {
   margin: 0;
   display: flex;
   width: 100%;
-  height: 210vh;
+  height: 110vh;
   background: #0a0a0a;
   font-family: "JetBrains Mono";
   display: flex;
@@ -34,67 +34,6 @@ body {
 .link:hover {
   color: #c4b5fd;
   text-decoration: underline;
-}
-/* header */
-.text-image {
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  margin: 0;
-  font-family: "Manrope";
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-img {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
-.container-text-image {
-  display: flex;
-  flex-direction: column;
-  left: 20%;
-  position: relative;
-}
-.parent {
-  position: relative;
-  color: #d1bf9b;
-  font-size: 48px;
-  font-weight: 600;
-}
-.child {
-  color: white;
-  font-size: 38px;
-  font-weight: 400;
-}
-.description {
-  color: white;
-  font-family: "Manrope";
-  font-size: 16px;
-  font-weight: 500;
-}
-.btn-nav {
-  position: relative;
-  left: 20%;
-  background: #b7a27a;
-  width: fit-content;
-  padding: 0.75rem 2rem;
-  color: #0a0a0a;
-  font-size: 18px;
-  font-family: "Manrope";
-  font-weight: 500;
-  border-radius: 30px;
-  cursor: pointer;
-  user-select: none;
-}
-.btn-nav:hover {
-  background: #c2ae86;
 }
 /* register form */
 .register {

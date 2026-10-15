@@ -70,7 +70,10 @@ var database *pgxpool.Pool
 func main() {
 	connectDB()
 	defer database.Close()
+	
+	server := http.FileServer(http.Dir("../frontend"))
 
+	http.Handle("/", server)
 	http.HandleFunc("/register", Register)
 	http.HandleFunc("/login", Login)
 	http.HandleFunc("/insert", InsertITEMS)
@@ -80,9 +83,6 @@ func main() {
 	http.HandleFunc("/Update", Update)
 	http.HandleFunc("/Shipping", Shipping)
 
-	server := http.FileServer(http.Dir("../frontend"))
-	http.Handle("/", server)
-	fmt.Println("Server Active http://127.0.0.1:8000/connect.html")
 
 	fmt.Println("Run http://127.0.0.1:8000 OK")
 	http.ListenAndServe("127.0.0.1:8000", nil)
@@ -91,8 +91,7 @@ func main() {
 func connectDB() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 
 	password := os.Getenv("PASSWORD")
@@ -100,13 +99,11 @@ func connectDB() {
 
 	database, err = pgxpool.New(context.Background(), databaseURL)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 
 	if Ping := database.Ping(context.Background()); Ping != nil {
-		log.Println(Ping)
-		return
+		log.Fatal(Ping)
 	}
 	fmt.Println("Connection to database OK")
 }

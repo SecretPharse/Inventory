@@ -303,7 +303,7 @@ data_history_item.addEventListener("click", (e) => {
 // button
 button_logout.addEventListener("click", () => {
   sessionStorage.clear();
-  window.location.href = "../connect.html";
+  window.location.href = "../index.html";
 });
 
 button_add_item.addEventListener("click", async () => {
